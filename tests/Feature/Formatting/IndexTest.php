@@ -15,3 +15,5 @@ it('shoud be able list all formatting', function () {
 
     assertDatabaseCount('formattings', 5);
 });
+
+

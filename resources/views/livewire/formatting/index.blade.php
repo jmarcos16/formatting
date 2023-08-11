@@ -1,9 +1,36 @@
 <div>
-    @foreach ($formattings as $formatting)
-        <div class="card mb-3">
-            <div class="card-body">
-                <h5 class="card-title">{{ $formatting->name }}</h5>
-            </div>
+    <div class="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        {{--  Region Create Formatting   --}}
+        <livewire:formatting.create />
+
+        {{--  Region List All Formatting   --}}
+        <span class="text-2xl font-bold">List All Formatting</span>
+        <div class="overflow-x-auto rounded-lg border border-gray-200 shadow-md my-2 ">
+            <table class="w-full border-collapse bg-white text-left text-sm text-gray-500">
+                <thead>
+                    <tr>
+                        <th class="px-6 py-2 text-normal bg-gray-200">Id</th>
+                        <th class="px-6 py-2 text-normal bg-gray-200">Name Formatting</th>
+                        <th class="px-6 py-2 text-normal bg-gray-200">Type Formatting</th>
+                        <th class="px-6 py-2 text-normal text-center bg-gray-200"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($formattings as $formatting)
+                        <tr>
+                            <td class="px-6 py-2 whitespace-nowrap">{{ $formatting->id }}</td>
+                            <td class="px-6 py-2 whitespace-nowrap">{{ $formatting->name }}</td>
+                            <td class="px-6 py-2 whitespace-nowrap">{{ $formatting->type }}</td>
+                            <td class="px-6 py-2 whitespace-nowrap text-center">
+                               <x-primary-button wire:click="edit({{ $formatting->id }})" class="">Gerenciar</x-primary-button>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
         </div>
-    @endforeach
+
+        {{--  EndRegion List All Formatting   --}}
+    </div>
 </div>
