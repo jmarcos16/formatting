@@ -1,4 +1,11 @@
-<div class="fixed top-0 left-0 right-0 z-50 w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+<div class="{{ $modal  ? 'block' : 'hidden' }}   fixed top-0 left-0 right-0 z-50 w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full" x-data="{closeModal(){
+        $el.addEventListener('click', () => {
+
+        });
+    }}" x-init="closeModal()">
+
+{{--    <div class="absolute top-0 left-0 right-0 bottom-0 w-full h-full bg-gray-900 opacity-50"></div>--}}
+{{--}}">--}}
 
     <div class=" lg:w-2/6 relative mx-auto top-[calc(100%-80%)] bg-white opacity-100 shadow rounded border p-6">
 
@@ -20,4 +27,5 @@
 
     </div>
 
-</div>
+</div
+    >

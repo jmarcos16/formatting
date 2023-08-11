@@ -6,6 +6,8 @@
 
         {{--  Region List All Formatting   --}}
         <span class="text-2xl font-bold">List All Formatting</span>
+        <x-secondary-button wire:click="$dispatchTo('formatting.create', 'show-modal')" class="float-right">Create Formatting</x-secondary-button>
+
         <div class="overflow-x-auto rounded-lg border border-gray-200 shadow-md my-2 ">
             <table class="w-full border-collapse bg-white text-left text-sm text-gray-500">
                 <thead>
