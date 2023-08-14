@@ -13,7 +13,7 @@ class Create extends Component
 
     public function mount(): void
     {
-        $this->modal = false;
+        $this->modal = true;
     }
 
     #[On('show-modal')]
