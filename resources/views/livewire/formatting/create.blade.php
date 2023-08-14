@@ -24,8 +24,13 @@
             </div>
 
             <div class="my-2">
-                <x-input-label for="type_formatting" value="Type Formatting" />
-                <x-text-input class="w-full" wire:model="type_formatting" id="type_formatting" placeholder="Type Formatting" />
+                <x-input-label for="type" value="Type Formatting" />
+                <x-select-input name="type" class="w-full" wire:model="type">
+                    <x-select.item label="Select a type" disabled/>
+                    <x-select.item value="1" label="Type 1" />
+                    <x-select.item value="2" label="Type 2" />
+                    <x-select.item value="3" label="Type 3" />
+                </x-select-input>
                 <x-input-error :messages="$errors->get('type_formatting')" />
             </div>
 
