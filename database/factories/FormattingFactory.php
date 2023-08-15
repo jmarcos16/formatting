@@ -2,11 +2,11 @@
 
 namespace Database\Factories;
 
-use App\Models\{GroupFormatting, TypeFormatting};
+use App\Models\{Formatting, GroupFormatting, Type, TypeFormatting};
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Formatting>
+ * @extends Factory<Formatting>
  */
 class FormattingFactory extends Factory
 {
@@ -21,7 +21,7 @@ class FormattingFactory extends Factory
             'name'        => fake()->name(),
             'description' => fake()->text(),
             'status'      => fake()->randomElement(['pending', 'progress', 'finished']),
-            'type'        => TypeFormatting::factory(),
+            'type_id'     => Type::factory()->create()->id,
         ];
     }
 }

@@ -20,8 +20,8 @@ class Index extends Component
     {
         return view('livewire.formatting.index',[
             'formatting' => Formatting::query()
+                ->with('types')
                 ->latest()
-                ->with('types:id,name')
                 ->paginate(),
         ]);
     }

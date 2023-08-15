@@ -11,20 +11,23 @@
             <table class="w-full border-collapse bg-white text-left text-sm text-gray-500">
                 <thead>
                     <tr>
-                        <th class="px-6 py-2 text-normal bg-gray-200">Id</th>
-                        <th class="px-6 py-2 text-normal bg-gray-200">Name Formatting</th>
-                        <th class="px-6 py-2 text-normal bg-gray-200">Type Formatting</th>
-                        <th class="px-6 py-2 text-normal text-center bg-gray-200"></th>
+                        <th class="px-6 py-2 text-normal font-medium bg-gray-200">Id</th>
+                        <th class="px-6 py-2 text-normal font-medium bg-gray-200">Name Formatting</th>
+                        <th class="px-6 py-2 text-normal font-medium bg-gray-200">Type Formatting</th>
+                        <th class="px-6 py-2 text-normal font-medium bg-gray-200">Progress</th>
+                        <th class="px-6 py-2 text-normal font-medium text-end bg-gray-200"></th>
                     </tr>
                 </thead>
                 <tbody class="divide-y">
-                @dump($formatting->first()->toArray())
                     @foreach($formatting as $format)
                         <tr>
                             <td class="px-6 py-2 whitespace-nowrap">{{ $format->id }}</td>
                             <td class="px-6 py-2 whitespace-nowrap">{{ $format->name }}</td>
-                            <td class="px-6 py-2 whitespace-nowrap">{{ $format->type }}</td>
-                            <td class="px-6 py-2 whitespace-nowrap text-center">
+                            <td class="px-6 py-2 whitespace-nowrap">{{ $format->types->name }}</td>
+                            <td class="px-6 py-2 whitespace-nowrap capitalize">
+                                <x-badge-progress :status="$format->status" />
+                            </td>
+                            <td class="px-6 py-2 whitespace-nowrap text-end">
                                <x-primary-button wire:click="edit({{ $format->id }})" class="">Gerenciar</x-primary-button>
                             </td>
                         </tr>

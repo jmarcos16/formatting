@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\{Factories\HasFactory, Model, Relations\BelongsTo, Relations\HasOne};
+use Illuminate\Database\Eloquent\{Factories\HasFactory, Model, Relations\HasOne};
 
 class Formatting extends Model
 {
@@ -12,7 +12,7 @@ class Formatting extends Model
 
     public function types(): HasOne
     {
-        return $this->hasOne(Type::class);
+        return $this->hasOne(Type::class, 'id', 'type_id');
     }
 
 }
