@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Livewire\Formatting\Index;
+use App\Livewire\Formatting\Show;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
@@ -10,6 +12,6 @@ Route::get('/', function () {
     return redirect()->route('formatting');
 });
 
-Route::get('formatting',\App\Livewire\Formatting\Index::class)->name('formatting');
-
+Route::get('formatting', Index::class)->name('formatting');
+Route::get('formatting/{formatting}', Show::class)->name('formatting.show');
 

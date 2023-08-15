@@ -9,13 +9,12 @@ use Livewire\{Attributes\On, Component, WithPagination};
 
 class Create extends Component
 {
-    use WithPagination;
 
     public bool $modal = false;
 
-    public string $name;
-    public ?string $description;
-    public string $type_id;
+    public string $name = '';
+    public ?string $description = '';
+    public string $type_id = '';
 
 
     #[On('show-modal')]
@@ -47,6 +46,7 @@ class Create extends Component
 
         $this->dispatch('close-modal');
         $this->dispatch('refresh-formatting')->to(Index::class);
+        $this->reset();
     }
 
     public function render(): View

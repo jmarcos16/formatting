@@ -13,7 +13,7 @@ border-gray-100 dark:border-gray-700">
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('formatting')" :active="request()->routeIs('formatting')">
+                    <x-nav-link :href="route('formatting')" :active="request()->routeIs('formatting')" wire:navigate>
                         {{ __('Formatting') }}
                     </x-nav-link>
                 </div>
