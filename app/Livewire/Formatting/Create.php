@@ -7,9 +7,11 @@ use Illuminate\Contracts\View\View;
 use JetBrains\PhpStorm\NoReturn;
 use Livewire\Attributes\On;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class Create extends Component
 {
+    use WithPagination;
 
     public bool $modal;
 
@@ -38,21 +40,20 @@ class Create extends Component
     #[NoReturn]
     public function save() : void
     {
-        dd($this->type);
         $this->validate([
-            'name' => 'required',
-            'description' => 'required',
-            'type_formatting' => 'required',
+            'name' => 'required|string|max:255',
+            'description' => 'string|nullable',
+            'type' => 'required|exists:type_formattings,id',
         ]);
 
         Formatting::query()->create([
             'name' => $this->name,
             'description' => $this->description,
-            'type_formatting' => $this->type_formatting,
+            'type' => $this->type,
         ]);
 
         $this->dispatch('close-modal');
-        $this->dispatch('refresh')->to(Index::class);
+        $this->dispatch('refresh-formatting')->to(Index::class);
     }
 
     public function render(): View

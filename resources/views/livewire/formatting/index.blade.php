@@ -1,6 +1,5 @@
 <div>
     <div class="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
         {{--  Region Create Formatting   --}}
         <livewire:formatting.create />
 
@@ -18,7 +17,7 @@
                         <th class="px-6 py-2 text-normal text-center bg-gray-200"></th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody class="divide-y">
                     @foreach($formattings as $formatting)
                         <tr>
                             <td class="px-6 py-2 whitespace-nowrap">{{ $formatting->id }}</td>

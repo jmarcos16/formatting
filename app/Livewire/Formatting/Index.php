@@ -3,7 +3,7 @@
 namespace App\Livewire\Formatting;
 
 use App\Models\Formatting;
-use Livewire\{Component, WithPagination};
+use Livewire\{Attributes\On, Component, WithPagination};
 
 class Index extends Component
 {
@@ -13,8 +13,8 @@ class Index extends Component
     {
         return view('livewire.formatting.index', [
             'formattings' => Formatting::query()
-            ->latest()
-            ->paginate(),
+                ->latest()
+                ->paginate(),
         ]);
     }
 }
