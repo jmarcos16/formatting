@@ -2,13 +2,13 @@
 
 namespace Database\Factories;
 
-use App\Models\TypeFormatting;
+use App\Models\Type;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends Factory<TypeFormatting>
+ * @extends Factory<Type>
  */
-class TypeFormattingFactory extends Factory
+class TypeFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -18,7 +18,7 @@ class TypeFormattingFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->name(),
+            'name' => fake()->randomElement(['supervisor', 'student', 'admin'])
         ];
     }
 }

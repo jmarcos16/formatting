@@ -2,28 +2,21 @@
 
 namespace App\Livewire\Formatting;
 
-use App\Models\Formatting;
+use App\Models\{Formatting, Type};
 use Illuminate\Contracts\View\View;
 use JetBrains\PhpStorm\NoReturn;
-use Livewire\Attributes\On;
-use Livewire\Component;
-use Livewire\WithPagination;
+use Livewire\{Attributes\On, Component, WithPagination};
 
 class Create extends Component
 {
     use WithPagination;
 
-    public bool $modal;
+    public bool $modal = false;
 
     public string $name;
     public ?string $description;
-    public string $type;
+    public string $type_id;
 
-
-    public function mount(): void
-    {
-        $this->modal = true;
-    }
 
     #[On('show-modal')]
     public function showModal(): void
@@ -43,13 +36,13 @@ class Create extends Component
         $this->validate([
             'name' => 'required|string|max:255',
             'description' => 'string|nullable',
-            'type' => 'required|exists:type_formattings,id',
+            'type_id' => 'required|exists:types,id',
         ]);
 
         Formatting::query()->create([
             'name' => $this->name,
             'description' => $this->description,
-            'type' => $this->type,
+            'type_id' => $this->type_id,
         ]);
 
         $this->dispatch('close-modal');
@@ -58,6 +51,8 @@ class Create extends Component
 
     public function render(): View
     {
-        return view('livewire.formatting.create');
+        return view('livewire.formatting.create', [
+            'types' => Type::query()->get(),
+        ]);
     }
 }

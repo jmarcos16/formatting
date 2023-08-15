@@ -27,14 +27,14 @@
             </div>
 
             <div class="my-2">
-                <x-input-label for="type" value="Type Formatting" />
-                <x-select-input name="type" class="w-full" wire:model="type">
-                    <x-select.item label="Select a type" disabled/>
-                    <x-select.item value="1" label="Type 1" />
-                    <x-select.item value="2" label="Type 2" />
-                    <x-select.item value="3" label="Type 3" />
+                <x-input-label for="type_id" value="Type Formatting" />
+                <x-select-input name="type_id" class="w-full" wire:model="type_id">
+                    <x-select.item label="Select a type_id" disabled/>
+                    @foreach($types as $type)
+                        <x-select.item :value="$type->id" :label="$type->name" />
+                    @endforeach
                 </x-select-input>
-                <x-input-error :messages="$errors->get('type')" />
+                <x-input-error :messages="$errors->get('type_id')" />
             </div>
 
             <div class="mt-3 flex gap-4 justify-end">

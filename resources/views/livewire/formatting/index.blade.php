@@ -18,13 +18,14 @@
                     </tr>
                 </thead>
                 <tbody class="divide-y">
-                    @foreach($formattings as $formatting)
+                @dump($formatting->first()->toArray())
+                    @foreach($formatting as $format)
                         <tr>
-                            <td class="px-6 py-2 whitespace-nowrap">{{ $formatting->id }}</td>
-                            <td class="px-6 py-2 whitespace-nowrap">{{ $formatting->name }}</td>
-                            <td class="px-6 py-2 whitespace-nowrap">{{ $formatting->type }}</td>
+                            <td class="px-6 py-2 whitespace-nowrap">{{ $format->id }}</td>
+                            <td class="px-6 py-2 whitespace-nowrap">{{ $format->name }}</td>
+                            <td class="px-6 py-2 whitespace-nowrap">{{ $format->type }}</td>
                             <td class="px-6 py-2 whitespace-nowrap text-center">
-                               <x-primary-button wire:click="edit({{ $formatting->id }})" class="">Gerenciar</x-primary-button>
+                               <x-primary-button wire:click="edit({{ $format->id }})" class="">Gerenciar</x-primary-button>
                             </td>
                         </tr>
                     @endforeach

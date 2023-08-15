@@ -5,7 +5,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    auth()->login(User::first());
+    auth()->login(User::first() ?? User::factory()->create());
 
     return redirect()->route('formatting');
 });
